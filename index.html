@@ -1011,6 +1011,26 @@ details.terms summary{cursor:pointer;font-weight:700;color:var(--sky-ink);font-s
  .cardnav .btn{padding:10px 8px;font-size:15px}
 }
 .smain,.scol{min-width:0}
+/* телефон: ықшам тақырып басы және кесте */
+@media(max-width:700px){
+ .shero.topic .scardh{padding:18px 18px}
+ .shero.topic .scardh h1{font-size:24px!important;line-height:1.15}
+ .shero.topic .sey{margin-bottom:8px;font-size:11px}
+ .shero.topic .sfull{display:none}
+ .shero.topic .sla{margin-top:6px;font-size:16px}.shero.topic .sla .lat{font-size:16px}
+ .shero.topic .sstats{margin-top:12px;gap:6px 16px}
+ .shero.topic .sstats b{font-size:20px}.shero.topic .sstats small{font-size:13px}
+ .shero:not(.topic):not(.home) .scardh{padding:20px 18px}
+ .shero:not(.topic):not(.home) .scardh h1{font-size:26px}
+ .shero:not(.topic):not(.home) .sstats{margin-top:12px}.shero:not(.topic):not(.home) .sstats b{font-size:22px}
+ .scrumb{font-size:13.5px}.scrumb>span>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60vw}
+ .figure table.tt{min-width:0}
+ .figure .tt th:nth-child(4),.figure .tt td:nth-child(4){display:none}
+ .figure .tt td,.figure .tt th{padding:8px 8px;font-size:14px;overflow-wrap:anywhere}
+ .figure .tt td:first-child{width:28px}
+ .prep-hd{padding:12px 14px}.prep-bd{padding:12px 14px;gap:12px}
+ .prep-steps{font-size:15px}
+}
 
 </style>
 
@@ -1317,7 +1337,7 @@ async function renderFind(panel,m){
   const pick=h('div',{class:'figpick',role:'group','aria-label':'Сурет'});
   figs.forEach(f=>pick.append(h('button',{'aria-pressed':String(f===fig),title:f.caption,onclick:e=>{fig=f;pick.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===e.currentTarget)));start()}},f.prep||f.caption||f.id)));
   const seg=h('div',{class:'seg',role:'group','aria-label':'Режим'});
-  [['name','Атауын тап'],['point','Суреттен көрсет'],['prep','Препаратты тан']].forEach(([k,l])=>seg.append(h('button',{'aria-pressed':String(k===mode),onclick:e=>{mode=k;seg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===e.currentTarget)));start()}},l)));
+  [['name','Атауын тап'],['point','Көрсет'],['prep','Препарат тану']].forEach(([k,l])=>seg.append(h('button',{'aria-pressed':String(k===mode),onclick:e=>{mode=k;seg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===e.currentTarget)));start()}},l)));
   const game=h('div',{class:'game'});
   const help=h('p',{class:'muted',style:'margin:0 0 10px'});
   panel.append(help,h('div',{class:'toolbar'},seg),pick,h('div',{style:'height:12px'}),game);
@@ -1327,7 +1347,7 @@ async function renderFind(panel,m){
     help.textContent=mode==='prep'?'Микросуретке қарап, препараттың атауын таңдаңыз. Нұсқалар барлық тақырыптардан алынады.':'Суреттегі белгілер жабылған. «Атауын тап» — (?) белгіленген құрылымның атауын таңдаңыз. «Суреттен көрсет» — аталған құрылымды суреттен басыңыз.';
     if(mode==='prep'){game.className='';renderPrepGame(game,pool,{local:pool.filter(x=>x.mod===m.id)});return}
     game.className='game';
-    if(!fig){game.innerHTML='';game.append(h('div',{class:'empty'},'Бұл тақырыпта белгілері бар сурет жоқ. «Препаратты тан» режимін таңдаңыз.'));return}
+    if(!fig){game.innerHTML='';game.append(h('div',{class:'empty'},'Бұл тақырыпта белгілері бар сурет жоқ. «Препарат тану» режимін таңдаңыз.'));return}
     order=shuffle(fig.labels.map((l,i)=>i).filter(i=>fig.labels[i].boxes&&fig.labels[i].boxes.length));pos=0;score=0;show()}
   function show(){
     game.innerHTML='';
