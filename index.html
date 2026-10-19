@@ -993,6 +993,24 @@ details.terms summary{cursor:pointer;font-weight:700;color:var(--sky-ink);font-s
 .opt .why{display:block}
 .opt.wrong .why{color:#9B2F3A}
 .opt.correct .why{color:var(--ok)}
+/* мобильде карта құралдары сыймай кетпеуі үшін */
+.seg{max-width:100%;flex-wrap:wrap}
+.card{max-width:100%}
+.face .hint{flex-wrap:wrap;align-items:flex-start}
+.face .hint span{white-space:normal}
+@media(max-width:700px){
+ .toolbar{gap:8px}
+ .toolbar .seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));width:100%}
+ .toolbar .seg button{padding:8px 4px;font-size:14px!important;min-height:42px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .toolbar .iconbtn{flex:1;min-height:44px;padding:8px 10px;font-size:14.5px!important}
+ .toolbar .sp{display:none}
+ .toolbar .counter{width:100%}
+ .face{padding:16px 16px}
+ .face.front .hint span:last-child{display:none}
+ .face.front .term{font-size:26px;padding:0 8px}
+ .cardnav .btn{padding:10px 8px;font-size:15px}
+}
+.smain,.scol{min-width:0}
 
 </style>
 
@@ -1191,7 +1209,7 @@ function renderCards(panel,all,key){
   let filter='all',deck=[],pos=0,known=new Set(store.get(key,[]));let onlyUnknown=false;
   const tb=h('div',{class:'toolbar'});
   const seg=h('div',{class:'seg',role:'group','aria-label':'Карта түрі'});
-  [['all','Барлығы'],['prep','Препараттар'],['part','Бөліктер'],['term','Терминдер']].forEach(([k,l])=>seg.append(h('button',{'aria-pressed':String(k==='all'),onclick:e=>{filter=k;seg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===e.currentTarget)));build(false)}},l)));
+  [['all','Барлығы'],['prep','Препарат'],['part','Бөлік'],['term','Термин']].forEach(([k,l])=>seg.append(h('button',{'aria-pressed':String(k==='all'),onclick:e=>{filter=k;seg.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===e.currentTarget)));build(false)}},l)));
   const unk=h('button',{class:'iconbtn','aria-pressed':'false',onclick:()=>{onlyUnknown=!onlyUnknown;unk.setAttribute('aria-pressed',String(onlyUnknown));unk.textContent=onlyUnknown?'Барлық карталар':'Тек білмейтіндерім';build(false)}},'Тек білмейтіндерім');
   const counter=h('span',{class:'counter'});
   tb.append(seg,h('button',{class:'iconbtn',onclick:()=>build(true)},'Араластыру'),unk,h('span',{class:'sp'}),counter);
