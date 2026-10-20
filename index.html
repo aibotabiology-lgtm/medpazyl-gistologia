@@ -1075,6 +1075,13 @@ details.terms summary{cursor:pointer;font-weight:700;color:var(--sky-ink);font-s
  .mtg{padding:8px 10px!important}.mtg span{display:none}
  .mcourse{margin-right:4px;font-size:12.5px;padding:5px 9px}
 }
+/* iOS Safari: аударылған картаның алдыңғы беті айна сияқты көрінбеуі үшін */
+.card-in{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
+.face{-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-transform:translateZ(0)}
+.face.back{-webkit-transform:rotateY(180deg) translateZ(0);transform:rotateY(180deg)}
+.face.front,.face.back{transition:visibility 0s linear .14s,opacity 0s linear .14s}
+.card.flip .face.front{visibility:hidden;opacity:0}
+.card:not(.flip) .face.back{visibility:hidden;opacity:0}
 
 </style>
 
