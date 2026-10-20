@@ -1455,7 +1455,7 @@ function topbar(){return h('header',{class:'mtop'},
   h('a',{class:'brand',href:'#home'},h('img',{src:UI_LOGO,alt:'MedPazyl'}),h('span',{},'MedPazyl',h('small',{},'Гистология'))),
   COURSE?h('a',{class:'mcourse',href:'#home'},COURSE+' курс'):null,
   h('a',{class:'mtg',href:TELEGRAM,target:'_blank',rel:'noopener','aria-label':'Telegram-арна',html:uiSvg(UI_ICO.tg)+'<span>Telegram</span>'}))}
-function uiFooter(){return h('footer',{class:'nfoot'},h('div',{class:'in'},h('span',{},'© MedPazyl · Гистология'),h('span',{},'Дереккөздер: Юй Р.И., Абильдинов Р.Б. «Гистология, цитология және эмбриология бойынша микросуреттер атласы» (2012); Афанасьев Ю.И., Юрина Н.А. «Гистология, эмбриология, цитология» (қаз. аударма); Аяпова Ж.О. «Цитология, эмбриология және гистология» (2009)')))}
+function uiFooter(){return h('footer',{class:'nfoot'},h('div',{class:'in'},h('span',{},'© MedPazyl · Гистология')))}
 function uiShell(active){
   const app=$('#app');app.innerHTML='';
   const nav=h('nav',{class:'snav-list'},...UI_NAV.map(([k,l,href])=>h('a',{class:'ni'+(k===active?' on':''),href:k==='home'&&COURSE?'#c'+COURSE:href,html:uiSvg(UI_ICO[k])+'<span>'+l+'</span>'})));
