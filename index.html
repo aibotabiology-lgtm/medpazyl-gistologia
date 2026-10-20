@@ -1053,6 +1053,28 @@ details.terms summary{cursor:pointer;font-weight:700;color:var(--sky-ink);font-s
  .cc-no{width:60px;height:60px;border-radius:16px}.cc-no b{font-size:26px}
  .cc-tx b{font-size:17px}.cc-tx small{font-size:14px}
 }
+/* телефон: флэш-карта ықшам */
+@media(max-width:700px){
+ .card{height:clamp(300px,46vh,420px)!important}
+ .card.termcard{height:clamp(270px,40vh,360px)!important}
+ .face{padding:14px 14px 14px 20px!important;gap:8px}
+ .face .hint{font-size:12.5px!important}
+ .face .hint span:first-child{line-height:1.3}
+ .face .imgbox{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+ .face .imgbox .stage{max-height:100%}
+ .face.front::after{width:36px;height:36px;right:12px;bottom:12px;font-size:18px}
+ .face.back .kz{font-size:21px}
+ .face.back .kv span{font-size:15px}
+ .cardnav{gap:6px}
+ .cardnav .btn{min-width:0}
+}
+@media(max-width:420px){
+ .mtop{padding:8px 12px;gap:6px}
+ .mtop .brand{font-size:16px;gap:8px;min-width:0}.mtop .brand img{width:32px;height:32px}
+ .mtop .brand small{font-size:11.5px}
+ .mtg{padding:8px 10px!important}.mtg span{display:none}
+ .mcourse{margin-right:4px;font-size:12.5px;padding:5px 9px}
+}
 
 </style>
 
